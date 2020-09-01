@@ -13,4 +13,10 @@ public class TestDuplicateCharacters {
         Map<Character, Long> ret = duplicateCharacters.getCount("abcda");
         Assert.assertNotNull(ret);
     }
+
+    @Test
+    public void testRemove() {
+        String result = DuplicateCharacters.remove("asdfasdf");
+        Assert.assertNotNull(result);
+    }
 }
