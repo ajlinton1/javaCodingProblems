@@ -1,21 +1,24 @@
 package chapter1;
 
+import java.util.Arrays;
+import java.util.Comparator;
+
 public class SortArrayOfString {
 
-    public static String[] sort(String[] inStrings) {
-        boolean swapDone;
-        do {
-            swapDone = false;
-            for (int i=0; i< inStrings.length-1; i++) {
-                if (inStrings[i].length()>inStrings[i+1].length()) {
-                    swapDone = true;
-                    String temp = inStrings[i+1];
-                    inStrings[i+1] = inStrings[i];
-                    inStrings[i] = temp;
-                }
-            }
-        } while (swapDone);
+/*    public static String[] sort(String[] inStrings) {
+        Arrays.sort(inStrings, (String s1, String s2) -> Integer.compare(s1.length(), s2.length()));
         return inStrings;
+    } */
+
+/*    public static String[] sort(String[] inStrings) {
+        Arrays.sort(inStrings, Comparator.comparingInt(String::length));
+        return inStrings;
+    } */
+
+    public static String[] sort(String[] inStrings) {
+        return Arrays.stream(inStrings)
+                .sorted(Comparator.comparingInt(String::length))
+                .toArray(String[]::new);
     }
 
 }
