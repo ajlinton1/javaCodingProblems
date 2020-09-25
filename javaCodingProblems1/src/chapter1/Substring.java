@@ -2,6 +2,7 @@ package chapter1;
 
 public class Substring {
 
+/*
     public static boolean containsSubstring(String mainString, String targetString) {
         int targetPos = 0;
         boolean candidate = false;
@@ -19,5 +20,10 @@ public class Substring {
         }
 
         return false;
+    }
+*/
+
+    public static boolean containsSubstring(String mainString, String targetString) {
+        return mainString.indexOf(targetString) != -1;
     }
 }

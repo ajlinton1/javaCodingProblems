@@ -18,6 +18,6 @@ public class TestSubstring {
         String inString = "This is a test";
         String target = "master";
         boolean result = Substring.containsSubstring(inString, target);
-        Assert.assertEquals(result, true);
+        Assert.assertEquals(result, false);
     }
 }
