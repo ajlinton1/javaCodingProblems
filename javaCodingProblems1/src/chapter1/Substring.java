@@ -2,28 +2,22 @@ package chapter1;
 
 public class Substring {
 
-/*
-    public static boolean containsSubstring(String mainString, String targetString) {
-        int targetPos = 0;
-        boolean candidate = false;
-        for (int i=0; i< mainString.length(); i++) {
-            if (mainString.charAt(i) == targetString.charAt(targetPos)) {
-                candidate = true;
-            } else {
-                candidate = false;
-                targetPos = 0;
-            }
-            if ((candidate) && (targetPos == targetString.length()-1)) {
-                return true;
-            }
-            targetPos++;
-        }
-
-        return false;
-    }
-*/
-
     public static boolean containsSubstring(String mainString, String targetString) {
         return mainString.indexOf(targetString) != -1;
+    }
+
+    public static int count(String mainString, String targetString) {
+        int n = targetString.length();
+        int count = 0;
+        int pos = 0;
+        do {
+            pos = mainString.indexOf(targetString, pos);
+            if (pos > -1) {
+                count++;
+                pos = pos + n;
+            }
+        } while (pos > -1);
+
+        return count;
     }
 }
