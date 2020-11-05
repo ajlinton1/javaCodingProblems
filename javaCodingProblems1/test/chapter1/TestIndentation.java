@@ -11,4 +11,12 @@ public class TestIndentation {
         String result = Indentation.indent(s, 3);
         Assert.assertNotNull(result);
     }
+
+    @Test
+    public void testTransform() {
+        String s = "This is a test";
+        String result = s.transform(String::toUpperCase);
+        Assert.assertNotNull(result);
+    }
+
 }
