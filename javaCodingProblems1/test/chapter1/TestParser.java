@@ -19,6 +19,12 @@ public class TestParser {
         Assert.assertEquals(355, result);
     }
 
-
+    @Test
+    public void testCompareUnsigned() {
+        int x = 5;
+        int y = 6;
+        int result = Integer.compareUnsigned(x, y);
+        Assert.assertTrue(result > 0);
+    }
 
 }
