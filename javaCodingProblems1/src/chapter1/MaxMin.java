@@ -3,19 +3,11 @@ package chapter1;
 public class MaxMin {
 
     public static int max(int x, int y) {
-        if (x > y) {
-            return x;
-        } else {
-            return y;
-        }
+        return Integer.max(x, y);
     }
 
     public static int min(int x, int y) {
-        if (x < y) {
-            return x;
-        } else {
-            return y;
-        }
+        return Integer.min(x, y);
     }
 
 }
