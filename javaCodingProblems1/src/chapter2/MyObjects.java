@@ -11,10 +11,12 @@ public class MyObjects {
         return obj;
     }
 
+    // TODO: Make method names the same
     public static <T, X extends Throwable> T requireNonNullElseThrow1(T obj, Supplier<? extends X> exceptionSupplier) throws X {
         if (obj == null) {
             throw exceptionSupplier.get();
         }
         return obj;
     }
+
 }

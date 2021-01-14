@@ -2,6 +2,8 @@ package chapter2;
 
 import org.junit.Test;
 
+import java.awt.*;
+
 public class TestExceptionHelper {
 
     @Test
@@ -16,9 +18,9 @@ public class TestExceptionHelper {
 
     @Test
     public void testExceptionHelper1() {
-        String name = null;
+        Color color = null;
         try {
-            name = MyObjects.requireNonNullElseThrow1(name, ()-> new UnsupportedOperationException("Name cannot be null"));
+            color = MyObjects.requireNonNullElseThrow1(color, ()-> new UnsupportedOperationException("Name cannot be null"));
         } catch (UnsupportedOperationException ex) {
             System.out.println(ex);
         }
