@@ -4,17 +4,16 @@ import java.util.function.Supplier;
 
 public class MyObjects {
 
-    public static <T, X extends Throwable> T requireNonNullElseThrow(T obj, X exception) throws X {
+    public static <T, X extends Throwable> T requireNonNullElseThrow(T obj, Supplier<? extends X> exceptionSupplier) throws X {
         if (obj == null) {
-            throw exception;
+            throw exceptionSupplier.get();
         }
         return obj;
     }
 
-    // TODO: Make method names the same
-    public static <T, X extends Throwable> T requireNonNullElseThrow1(T obj, Supplier<? extends X> exceptionSupplier) throws X {
+    public static <T> T defaultIfNull(T obj, Supplier<T> defaultSupplier) {
         if (obj == null) {
-            throw exceptionSupplier.get();
+            return defaultSupplier.get();
         }
         return obj;
     }
