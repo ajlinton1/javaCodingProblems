@@ -18,4 +18,10 @@ public class MyObjects {
         return obj;
     }
 
+    public static void indexChecker(int botton, int top, int v) throws IndexOutOfBoundsException {
+        if (v< botton || v>=top) {
+            throw new IndexOutOfBoundsException("Illegal index");
+        }
+    }
+
 }
