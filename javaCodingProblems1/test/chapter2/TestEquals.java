@@ -57,4 +57,23 @@ public class TestEquals {
         Assert.assertEquals(true, result);
     }
 
+    @Test
+    public void testEquals6() {
+        Color c1 = new Color(1);
+        Color c2 = new Color(1);
+        int h1 = c1.hashCode();
+        int h2 = c2.hashCode();
+        var result = h1== h2;
+        Assert.assertEquals(true, result);
+    }
+
+    @Test
+    public void testEquals7() {
+        Color c1 = new Color(1);
+        Color c2 = new Color(2);
+        int h1 = c1.hashCode();
+        int h2 = c2.hashCode();
+        Assert.assertNotEquals(h1, h2);
+    }
+
 }
