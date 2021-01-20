@@ -25,4 +25,30 @@ public class TestImmutable {
         Assert.assertNotEquals(hashCode0, hashCode1);
     }
 
+    @Test
+    public void testImmutable2() {
+        String s0 = "First value";
+        Object o0 = (Object)s0;
+        String toString0 = o0.toString();
+        s0 = "Second value";
+        Object o1 = (Object)s0;
+        String toString1 = o1.toString();
+        Assert.assertNotEquals(toString0, toString1);
+    }
+
+    @Test
+    public void testImmutable3() {
+        String s0 = "First value";
+        String s1 = "First value";
+        Assert.assertEquals(s0 == s1, true);
+    }
+
+    @Test
+    public void testImmutable4() {
+        String s0 = "First value";
+        String s1 = "Second value";
+        s0 = "First value";
+        Assert.assertEquals(true, s0 == s1);
+    }
+
 }
