@@ -51,4 +51,10 @@ public class TestImmutable {
         Assert.assertEquals(true, s0 == s1);
     }
 
+    @Test
+    public void testImmuatableClass() {
+        Immutable immutable = new Immutable(1,2, 3);
+        Immutable immutable1 = new Immutable(4,5, 6);
+        Assert.assertEquals(false, immutable == immutable1);
+    }
 }
