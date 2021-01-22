@@ -3,6 +3,9 @@ package chapter2;
 import org.junit.Assert;
 import org.junit.Test;
 
+import java.util.ArrayList;
+import java.util.List;
+
 public class TestImmutable {
 
     @Test
@@ -56,5 +59,30 @@ public class TestImmutable {
         Immutable immutable = new Immutable(1,2, 3);
         Immutable immutable1 = new Immutable(4,5, 6);
         Assert.assertEquals(false, immutable == immutable1);
+    }
+
+    @Test
+    public void testImmuatableClass1() {
+        List<String> list = new ArrayList<>();
+        list.add("Hello");
+        Immutable immutable = new Immutable(1,2, 3, list);
+        list.add("There");
+        List<String> list1 = immutable.getList();
+        for (String s: list1) {
+            System.out.println(s);
+        }
+        Assert.assertEquals(1, list1.size());
+    }
+
+    @Test
+    public void testImmuatableClass2() {
+        List<String> list = new ArrayList<>();
+        String s = "Hello";
+        list.add(s);
+        Immutable immutable = new Immutable(1,2, 3, list);
+        s = "Goodby";
+        List<String> list1 = immutable.getList();
+        String s1 = list.get(0);
+        Assert.assertEquals(s, s1);
     }
 }
