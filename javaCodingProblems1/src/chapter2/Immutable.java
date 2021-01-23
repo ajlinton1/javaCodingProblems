@@ -8,19 +8,25 @@ public final class Immutable {
     private final int x, y, z;
     private final List<String> list;
 
-    public Immutable(int x1, int y1, int z1) {
+    private Immutable(int x1, int y1, int z1) {
         this(x1, y1, z1, null);
     }
 
-    public Immutable(int x1, int y1, int z1, List<String> list1) {
+    private Immutable(int x1, int y1, int z1, List<String> list1) {
         this.x = x1;
         this.y = y1;
         this.z = z1;
 
         this.list = new ArrayList<String>();
-        for (String s:list1) {
-            list.add(s);
+        if (list1!=null) {
+            for (String s:list1) {
+                list.add(s);
+            }
         }
+    }
+
+    public static ImmutableBuilder getBuilder(int x, int y, int z) {
+        return new ImmutableBuilder(x, y, z);
     }
 
     public int getX() {
@@ -41,5 +47,27 @@ public final class Immutable {
             list1.add(s);
         }
         return list1;
+    }
+
+    public static final class ImmutableBuilder {
+
+        private final int x, y, z;
+        private List<String> list;
+
+        public ImmutableBuilder(int x1, int y1, int z1) {
+            x = x1;
+            y = y1;
+            z = z1;
+        }
+
+        public ImmutableBuilder list(List<String> pList) {
+            this.list = pList;
+            return this;
+        }
+
+        public Immutable build() {
+            Immutable ret = new Immutable(this.x, this.y, this.z, this.list);
+            return ret;
+        }
     }
 }

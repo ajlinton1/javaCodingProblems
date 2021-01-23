@@ -51,13 +51,13 @@ public class TestImmutable {
         String s0 = "First value";
         String s1 = "Second value";
         s0 = "First value";
-        Assert.assertEquals(true, s0 == s1);
+        Assert.assertEquals(false, s0 == s1);
     }
 
     @Test
     public void testImmuatableClass() {
-        Immutable immutable = new Immutable(1,2, 3);
-        Immutable immutable1 = new Immutable(4,5, 6);
+        Immutable immutable = Immutable.getBuilder(1,2,3).build();
+        Immutable immutable1 = Immutable.getBuilder(4,5,6).build();
         Assert.assertEquals(false, immutable == immutable1);
     }
 
@@ -65,7 +65,7 @@ public class TestImmutable {
     public void testImmuatableClass1() {
         List<String> list = new ArrayList<>();
         list.add("Hello");
-        Immutable immutable = new Immutable(1,2, 3, list);
+        Immutable immutable = Immutable.getBuilder(1,2,3).list(list).build();
         list.add("There");
         List<String> list1 = immutable.getList();
         for (String s: list1) {
@@ -79,10 +79,10 @@ public class TestImmutable {
         List<String> list = new ArrayList<>();
         String s = "Hello";
         list.add(s);
-        Immutable immutable = new Immutable(1,2, 3, list);
+        Immutable immutable = Immutable.getBuilder(1,2,3).list(list).build();
         s = "Goodby";
         List<String> list1 = immutable.getList();
         String s1 = list.get(0);
-        Assert.assertEquals(s, s1);
+        Assert.assertNotEquals(s, s1);
     }
 }
