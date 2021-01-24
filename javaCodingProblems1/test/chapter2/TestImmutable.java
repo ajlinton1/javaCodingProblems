@@ -85,4 +85,12 @@ public class TestImmutable {
         String s1 = list.get(0);
         Assert.assertNotEquals(s, s1);
     }
+
+    @Test(expected = IllegalArgumentException.class)
+    public void testImmuatableClassInvalid() {
+        List<String> list = new ArrayList<>();
+        String s = "Hello";
+        list.add(s);
+        Immutable immutable = Immutable.getBuilder(1,-2,3).list(list).build();
+    }
 }

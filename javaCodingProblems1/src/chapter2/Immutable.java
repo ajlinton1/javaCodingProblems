@@ -65,7 +65,16 @@ public final class Immutable {
             return this;
         }
 
-        public Immutable build() {
+        public Immutable build() throws IllegalArgumentException {
+            if (this.x<0) {
+                throw new IllegalArgumentException("x<0");
+            }
+            if (this.y<0) {
+                throw new IllegalArgumentException("y<0");
+            }
+            if (this.z<0) {
+                throw new IllegalArgumentException("z<0");
+            }
             Immutable ret = new Immutable(this.x, this.y, this.z, this.list);
             return ret;
         }
