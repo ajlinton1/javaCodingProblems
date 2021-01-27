@@ -17,4 +17,9 @@ public class ClonableClass implements Cloneable{
     public ClonableClass clone() throws CloneNotSupportedException {
         return (ClonableClass) super.clone();
     }
+
+    @Override
+    public String toString() {
+        return String.format("%s %s", x, child.getName());
+    }
 }

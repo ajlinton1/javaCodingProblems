@@ -16,4 +16,11 @@ public class TestClonable {
         }
         System.out.println(clone);
     }
+
+    @Test
+    public void testToString() {
+        var cloneableClass = new ClonableClass(4, "Ed");
+        String s = cloneableClass.toString();
+        System.out.println(s);
+    }
 }
