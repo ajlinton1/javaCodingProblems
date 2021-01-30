@@ -10,9 +10,25 @@ import java.time.zone.*;
 public class TestDates  {
 
     @Test
-    public void testParse() {
+    public void testParseDate() {
         String s = "2021-01-28";
         LocalDate d = LocalDate.parse(s);
         System.out.println(d);
     }
+
+    @Test
+    public void testParseDateTime() {
+        String s = "2021-01-28T10:28:15";
+        LocalDateTime d = LocalDateTime.parse(s);
+        System.out.println(d);
+    }
+
+    @Test
+    public void testFormat() {
+        LocalDate dNow = LocalDate.now();
+        DateTimeFormatter dateTimeFormatter = DateTimeFormatter.ofPattern("LL/dd/yyyy");
+        String s = dateTimeFormatter.format(dNow);
+        System.out.println(s);
+    }
+
 }
