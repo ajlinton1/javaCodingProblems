@@ -31,4 +31,15 @@ public class TestDates  {
         System.out.println(s);
     }
 
+    @Test
+    public void testGetDate() {
+        var dNow = LocalDate.now();
+        System.out.println(dNow);
+    }
+
+    @Test
+    public void testGetTime() {
+        var tNow = LocalTime.now();
+        System.out.println(tNow);
+    }
 }
