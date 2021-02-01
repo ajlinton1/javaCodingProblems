@@ -42,4 +42,12 @@ public class TestDates  {
         var tNow = LocalTime.now();
         System.out.println(tNow);
     }
+
+    @Test
+    public void testLocalDateTime() {
+        var date = LocalDate.now();
+        var time = LocalTime.now();
+        var dateTime = LocalDateTime.of(date, time);
+        System.out.println(dateTime);
+    }
 }
