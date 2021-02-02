@@ -42,4 +42,10 @@ public class TestDates  {
         var tNow = LocalTime.now();
         System.out.println(tNow);
     }
+
+    @Test
+    public void testInstant() {
+        Instant n = Instant.now();
+        System.out.println(n);
+    }
 }
