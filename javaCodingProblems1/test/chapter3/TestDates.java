@@ -48,4 +48,20 @@ public class TestDates  {
         Instant n = Instant.now();
         System.out.println(n);
     }
+
+    @Test
+    public void testPeriod() {
+        LocalDate endOf20th = LocalDate.of(2000,12,31);
+        LocalDate nowDate = LocalDate.now();
+        Period period = Period.between(nowDate, endOf20th);
+        Assert.assertNotNull(period);
+    }
+
+    @Test
+    public void testDuration() {
+        LocalTime morning = LocalTime.of(7,0,0);
+        LocalTime now = LocalTime.now();
+        Duration duration = Duration.between(now, morning);
+        Assert.assertNotNull(duration);
+    }
 }
