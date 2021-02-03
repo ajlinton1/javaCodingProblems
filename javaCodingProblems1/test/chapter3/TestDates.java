@@ -59,9 +59,16 @@ public class TestDates  {
 
     @Test
     public void testDuration() {
-        LocalTime morning = LocalTime.of(7,0,0);
+        LocalTime morning = LocalTime.of(7, 0, 0);
         LocalTime now = LocalTime.now();
         Duration duration = Duration.between(now, morning);
         Assert.assertNotNull(duration);
+    }
+
+    public void testLocalDateTime() {
+        var date = LocalDate.now();
+        var time = LocalTime.now();
+        var dateTime = LocalDateTime.of(date, time);
+        System.out.println(dateTime);
     }
 }
