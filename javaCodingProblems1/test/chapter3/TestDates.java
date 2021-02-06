@@ -65,10 +65,37 @@ public class TestDates  {
         Assert.assertNotNull(duration);
     }
 
+    @Test
     public void testLocalDateTime() {
         var date = LocalDate.now();
         var time = LocalTime.now();
         var dateTime = LocalDateTime.of(date, time);
         System.out.println(dateTime);
+    }
+
+    @Test
+    public void testTimeUnits() {
+        var date = LocalDateTime.now();
+        var hour = date.getHour();
+        var minute = date.getMinute();
+        var second = date.getSecond();
+        var year = date.getYear();
+        var month = date.getMonth();
+        var day = date.getDayOfMonth();
+    }
+
+    @Test
+    public void testAddTime() {
+        var date = LocalDateTime.now();
+        var date1 = date.plusDays(2);
+        System.out.println(date1);
+    }
+
+    @Test
+    public void testSubtractTime() {
+        var p = Period.ofDays(700);
+        var date = LocalDateTime.now();
+        var date1 = date.minus(p);
+        System.out.println(date1);
     }
 }
