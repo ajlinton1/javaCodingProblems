@@ -6,6 +6,7 @@ import java.time.*;
 import java.time.format.*;
 import java.time.temporal.*;
 import java.time.zone.*;
+import java.util.ArrayList;
 
 public class TestDates  {
 
@@ -97,5 +98,17 @@ public class TestDates  {
         var date = LocalDateTime.now();
         var date1 = date.minus(p);
         System.out.println(date1);
+    }
+
+    @Test
+    public void testGetTimeZones() {
+        var zones = ZoneId.getAvailableZoneIds();
+        System.out.println(zones);
+        var zoneIds = new ArrayList<ZoneId>();
+        for (String zone: zones) {
+            var zoneId = ZoneId.of(zone);
+            zoneIds.add(zoneId);
+        }
+        System.out.println(zoneIds);
     }
 }
