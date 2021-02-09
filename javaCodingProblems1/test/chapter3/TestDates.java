@@ -111,4 +111,17 @@ public class TestDates  {
         }
         System.out.println(zoneIds);
     }
+
+    @Test
+    public void testGetTimeInAllTimeZones() {
+        var now = ZonedDateTime.now();
+        var zones = ZoneId.getAvailableZoneIds();
+        var zoneIds = new ArrayList<ZoneId>();
+        for (String zone: zones) {
+            var zoneId = ZoneId.of(zone);
+            System.out.println(zone);
+            var zoneTime = now.withZoneSameInstant(zoneId);
+            System.out.println(zoneTime);
+        }
+    }
 }
