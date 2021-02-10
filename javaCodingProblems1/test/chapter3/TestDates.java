@@ -124,4 +124,22 @@ public class TestDates  {
             System.out.println(zoneTime);
         }
     }
+
+    @Test
+    public void testFlightTime() {
+        // 2021-02-10T13:57:00.283218600+08:00[Australia/Perth]
+        String departureTimeString = "2021-02-10T13:57:00.283218600+08:00";
+        // Parse departureTime
+        ZonedDateTime departureTime = ZonedDateTime.parse(departureTimeString);
+        // Create Perth TimeZone
+        // Set departure time to Perth timezone
+        // Add 15 hours, 30 minutes
+        var flightTime = Duration.ofHours(15).plus(30, ChronoUnit.MINUTES);
+        var arrivalTimeUnzoned = departureTime.plus(flightTime);
+        // Create Bucharest timezone, Europe/Bucharest
+        var zoneBucharest = ZoneId.of("Europe/Bucharest");
+        // Create arrival time
+        var arrivalTime = arrivalTimeUnzoned.toInstant().atZone(zoneBucharest);
+        System.out.println(arrivalTime);
+    }
 }
