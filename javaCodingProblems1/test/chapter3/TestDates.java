@@ -2,6 +2,8 @@ package chapter3;
 
 import org.junit.Assert;
 import org.junit.Test;
+
+import java.sql.Date;
 import java.time.*;
 import java.time.format.*;
 import java.time.temporal.*;
@@ -127,19 +129,29 @@ public class TestDates  {
 
     @Test
     public void testFlightTime() {
-        // 2021-02-10T13:57:00.283218600+08:00[Australia/Perth]
-        String departureTimeString = "2021-02-10T13:57:00.283218600+08:00";
-        // Parse departureTime
-        ZonedDateTime departureTime = ZonedDateTime.parse(departureTimeString);
-        // Create Perth TimeZone
-        // Set departure time to Perth timezone
-        // Add 15 hours, 30 minutes
+        LocalDateTime ldt = LocalDateTime.of(2021, Month.FEBRUARY, 10, 1, 1);
+        ZonedDateTime auPerthDeparture = ldt.atZone(ZoneId.of("Australia/Perth"));
+
         var flightTime = Duration.ofHours(15).plus(30, ChronoUnit.MINUTES);
-        var arrivalTimeUnzoned = departureTime.plus(flightTime);
-        // Create Bucharest timezone, Europe/Bucharest
-        var zoneBucharest = ZoneId.of("Europe/Bucharest");
-        // Create arrival time
-        var arrivalTime = arrivalTimeUnzoned.toInstant().atZone(zoneBucharest);
-        System.out.println(arrivalTime);
+        ZonedDateTime auPerthArrive = auPerthDeparture.plus(flightTime);
+
+        ZonedDateTime euBucharestDepart = auPerthDeparture.withZoneSameInstant(ZoneId.of("Europe/Bucharest"));
+        ZonedDateTime euBucharestArrive = auPerthArrive.withZoneSameInstant(ZoneId.of("Europe/Bucharest"));
+
+        System.out.println(euBucharestArrive);
+    }
+
+    @Test
+    public void testUnixTimestamp() {
+        long unixTimestamp = 1387909800;
+        var oldDate = new java.util.Date(unixTimestamp * 1000L);
+        System.out.println(oldDate);
+        
+        var instant = Instant.ofEpochSecond(unixTimestamp);
+        var date = java.util.Date.from(instant);
+        System.out.println(date);
+        
+        var newDate = LocalDateTime.ofEpochSecond(unixTimestamp, 0, ZoneOffset.UTC);
+        System.out.println(newDate);
     }
 }
