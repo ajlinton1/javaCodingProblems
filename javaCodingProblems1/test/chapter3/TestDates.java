@@ -154,4 +154,12 @@ public class TestDates  {
         var newDate = LocalDateTime.ofEpochSecond(unixTimestamp, 0, ZoneOffset.UTC);
         System.out.println(newDate);
     }
+
+    @Test
+    public void testFirstLastMonthDat() {
+        var today = LocalDate.now();
+        var firstDay = today.with(TemporalAdjusters.firstDayOfMonth());
+        var lastDay = today.with(TemporalAdjusters.lastDayOfMonth());
+        System.out.println(lastDay);
+    }
 }
