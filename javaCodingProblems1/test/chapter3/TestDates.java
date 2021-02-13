@@ -162,4 +162,10 @@ public class TestDates  {
         var lastDay = today.with(TemporalAdjusters.lastDayOfMonth());
         System.out.println(lastDay);
     }
+
+    @Test
+    public void testZoneOfsets() {
+        ZoneOffset zoneOffset = ZoneOffset.UTC;
+        System.out.println(zoneOffset);
+    }
 }
