@@ -168,4 +168,14 @@ public class TestDates  {
         ZoneOffset zoneOffset = ZoneOffset.UTC;
         System.out.println(zoneOffset);
     }
+
+    @Test
+    public void testDateTemporal() {
+        var epochSec = Instant.ofEpochSecond(5000L);
+        var localDateTime = LocalDateTime.ofInstant(epochSec, ZoneId.systemDefault());
+        System.out.println(localDateTime);
+
+        var localDate = LocalDate.ofInstant(epochSec, ZoneId.systemDefault());
+        System.out.println(localDate);
+    }
 }
