@@ -178,4 +178,11 @@ public class TestDates  {
         var localDate = LocalDate.ofInstant(epochSec, ZoneId.systemDefault());
         System.out.println(localDate);
     }
+    
+    @Test
+    public void testDateRange() {
+        var start = LocalDate.of(2021,2,16);
+        var end = LocalDate.of(2021,3,20);
+        start.datesUntil(end).forEach(System.out::println);
+    }
 }
