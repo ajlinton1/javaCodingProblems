@@ -185,4 +185,13 @@ public class TestDates  {
         var end = LocalDate.of(2021,3,20);
         start.datesUntil(end).forEach(System.out::println);
     }
+
+    @Test
+    public void testAge() {
+        var birthdate = LocalDate.of(1965, 9, 11);
+        var now = LocalDate.now();
+        var age = Period.between(birthdate, now);
+        var ageYears = age.getYears();
+        System.out.println(ageYears);
+    }
 }
