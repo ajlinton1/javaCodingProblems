@@ -194,4 +194,24 @@ public class TestDates  {
         var ageYears = age.getYears();
         System.out.println(ageYears);
     }
+
+    @Test
+    public void testDayStartEnd() {
+        var day = LocalDate.of(2020, 8, 3);
+        var start = day.atStartOfDay();
+        System.out.println(start);
+        var end = start.plusHours(24);
+        System.out.println(end);
+    }
+
+    @Test
+    public void testDifferenceBetweenDates() {
+        var start = LocalDate.of(2001, 4, 4);
+        var end = LocalDate.of(2008, 3, 4);
+        var diff = Period.between(start, end);
+        var days = diff.getDays();
+        System.out.println(days);
+        var daysBetween = ChronoUnit.DAYS.between(start, end);
+        System.out.println(daysBetween);
+    }
 }
