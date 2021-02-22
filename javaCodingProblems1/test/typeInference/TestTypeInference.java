@@ -31,4 +31,11 @@ public class TestTypeInference {
         Assert.assertNotNull(x);
         System.out.println(x);
     }
+
+    @Test
+    public void test81() {
+        var byteNumber = (byte) 25;     // inferred as byte
+        var shortNumber = (short) 1463; // inferred as short
+        System.out.println(shortNumber);
+    }
 }
