@@ -3,7 +3,7 @@ package chapter1;
 import java.util.ArrayList;
 import java.util.List;
 
-public class NumberConverter {
+public class    NumberConverter {
 
     public static List<Object> convert(String inString) {
         Integer intValue;
