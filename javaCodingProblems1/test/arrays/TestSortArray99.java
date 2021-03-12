@@ -33,4 +33,30 @@ public class TestSortArray99 {
             previous1 = current;
         }
     }
+
+    @Test
+    public void testBubbleSort1() {
+        var a = ArrayService.getRandomArray();
+
+        for (var i = 1; i < a.length; i++) {
+            for (var j = 0; j < a.length - i; j++) {
+                if (a[j] > a[j + 1]) {
+                    var temp = a[j + 1];
+                    a[j + 1] = a[j];
+                    a[j] = temp;
+                }
+            }
+        }
+
+        var previous1 = -1;
+        for (var current: a) {
+            Assert.assertTrue(current >= previous1);
+            previous1 = current;
+        }
+    }
+
+    @Test
+    public void testSelectionSort() {
+        // https://learning.oreilly.com/library/view/beginning-java-data/9781789537178/c6cc1057-cab6-46be-aeea-1e3610008d3d.xhtml
+    }
 }
