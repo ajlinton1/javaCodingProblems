@@ -59,4 +59,27 @@ public class TestSortArray99 {
     public void testSelectionSort() {
         // https://learning.oreilly.com/library/view/beginning-java-data/9781789537178/c6cc1057-cab6-46be-aeea-1e3610008d3d.xhtml
     }
+
+    @Test
+    public void testShuffle() {
+        var numbers = ArrayService.getRandomArray();
+        int[] newNumbers = new int[numbers.length];
+        for (var n: newNumbers) {
+            n = -1;
+        }
+        var pos = ArrayService.getRandomArray();
+        var index = 0;
+        while (index < numbers.length) {
+            var newPos = pos[index];
+            while (newNumbers[newPos]==-1) {
+                newPos++;
+                if (newPos == numbers.length) {
+                    newPos = 0;
+                }
+            }
+            newNumbers[newPos] = numbers[index];
+            index++;
+        }
+        Assert.assertNotNull(newNumbers);
+    }
 }
