@@ -58,6 +58,28 @@ public class TestSortArray99 {
     @Test
     public void testSelectionSort() {
         // https://learning.oreilly.com/library/view/beginning-java-data/9781789537178/c6cc1057-cab6-46be-aeea-1e3610008d3d.xhtml
+        var numbers = ArrayService.getRandomArray();
+        var split = 0;
+        while (split < numbers.length) {
+            var min = Integer.MAX_VALUE;
+            var minPos = Integer.MAX_VALUE;
+            for (var i=split;i<numbers.length;i++) {
+                if (numbers[i]<min) {
+                    min = numbers[i];
+                    minPos = i;
+                }
+            }
+            var temp = numbers[split];
+            numbers[split] = numbers[minPos];
+            numbers[minPos] = temp;
+            split++;
+        }
+
+        var previous1 = -1;
+        for (var current: numbers) {
+            Assert.assertTrue(current >= previous1);
+            previous1 = current;
+        }
     }
 
     @Test
