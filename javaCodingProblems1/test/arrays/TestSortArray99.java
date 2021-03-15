@@ -83,6 +83,46 @@ public class TestSortArray99 {
     }
 
     @Test
+    public void testQuickSort() {
+        var numbers = ArrayService.getRandomArray();
+
+        quickSort(numbers, 0, numbers.length -1);
+
+        var previous1 = -1;
+        for (var current: numbers) {
+            Assert.assertTrue(current >= previous1);
+            previous1 = current;
+        }
+    }
+
+    void quickSort(int[] numbers, int start, int end) {
+        if (start < end) {
+            var p = partition(numbers, start, end);
+            quickSort(numbers, start, p-1);
+            quickSort(numbers, p+1, end);
+        }
+    }
+
+    int partition(int[] numbers, int start, int end) {
+        int pivot = numbers[end];
+        int x = start - 1;
+        for (int i = start; i < end; i++) {
+            if (numbers[i] < pivot) {
+                x++;
+                swap(numbers, x, i);
+            }
+        }
+        swap(numbers, x + 1, end);
+        return x + 1;
+    }
+
+    void swap(int[] numbers, int x, int y) {
+        int temp = numbers[y];
+        numbers[y] = numbers[x];
+        numbers[x] = temp;
+    }
+
+    @Test
     public void testShuffle() {
         var numbers = ArrayService.getRandomArray();
         int[] newNumbers = new int[numbers.length];
