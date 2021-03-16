@@ -3,6 +3,9 @@ package arrays;
 import org.junit.Assert;
 import org.junit.Test;
 
+import static arrays.Sorter.mergeSort;
+import static arrays.Sorter.quickSort;
+
 public class TestSortArray99 {
 
     @Test
@@ -95,31 +98,19 @@ public class TestSortArray99 {
         }
     }
 
-    void quickSort(int[] numbers, int start, int end) {
-        if (start < end) {
-            var p = partition(numbers, start, end);
-            quickSort(numbers, start, p-1);
-            quickSort(numbers, p+1, end);
-        }
-    }
+    // https://learning.oreilly.com/library/view/beginning-java-data/9781789537178/7112e3ee-1235-4f90-a5e0-551a9337fffb.xhtml
 
-    int partition(int[] numbers, int start, int end) {
-        int pivot = numbers[end];
-        int x = start - 1;
-        for (int i = start; i < end; i++) {
-            if (numbers[i] < pivot) {
-                x++;
-                swap(numbers, x, i);
-            }
-        }
-        swap(numbers, x + 1, end);
-        return x + 1;
-    }
+    @Test
+    public void testMergeSort() {
+        var numbers = ArrayService.getRandomArray();
 
-    void swap(int[] numbers, int x, int y) {
-        int temp = numbers[y];
-        numbers[y] = numbers[x];
-        numbers[x] = temp;
+        mergeSort(numbers, 0, numbers.length-1);
+
+        var previous1 = -1;
+        for (var current: numbers) {
+            Assert.assertTrue(current >= previous1);
+            previous1 = current;
+        }
     }
 
     @Test
