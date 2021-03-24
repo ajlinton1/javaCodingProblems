@@ -1,5 +1,8 @@
 package arrays;
 
+import java.util.ArrayList;
+import java.util.List;
+
 public class Sorter {
 
     public static void quickSort(int[] numbers, int start, int end) {
@@ -29,31 +32,45 @@ public class Sorter {
         numbers[x] = temp;
     }
 
-    public static void mergeSort(int[] numbers, int start, int end) {
-        if (start < end) {
-            int midpoint = (end - start) / 2 + start;
-            mergeSort(numbers, start, midpoint-1);
-            mergeSort(numbers, midpoint+1, end);
-            merge(numbers, start, midpoint, end);
+    public static List<Integer> mergeSort(List<Integer> numbers) {
+        if (numbers.size() > 1) {
+            int midpoint = (numbers.size()) /2;
+            var left = copyOfRange(numbers, 0, midpoint);
+            var right = copyOfRange(numbers, midpoint, numbers.size());
+            return merge(mergeSort(left), mergeSort(right));
+        } else {
+            return numbers;
         }
     }
 
-    static void merge(int[] number, int start, int midpoint, int end) {
-        int i = start;
-        int j = midpoint + 1;
-        int[] arrayTemp = new int[end - start + 1];
-        for (int k=0; k < (end-start); k++) {
-            if ((i<=midpoint ) && ((j > end) || (number[i] <= number[j]))) {
-                arrayTemp[k] = number[i];
-                i++;
+    static List<Integer> copyOfRange(List<Integer> numbers, int start, int end) {
+        var size = end - start;
+        var ret = new ArrayList<Integer>();
+        for (var i=start; i<end; i++) {
+            ret.add(numbers.get(i));
+        }
+        return ret;
+    }
+
+    static List<Integer> merge(List<Integer> left, List<Integer> right) {
+        int leftIndex = 0;
+        int rightIndex = 0;
+        List<Integer> combined = new ArrayList<>();
+
+        while (leftIndex < left.size() && rightIndex < right.size()) {
+            if (left.get(leftIndex) < right.get(rightIndex)) {
+                combined.add(left.get(leftIndex++));
             } else {
-                arrayTemp[k] = number[j];
-                j++;
+                combined.add(right.get(rightIndex++));
             }
         }
-        for (int x=0;x<arrayTemp.length;x++){
-            number[start+x] = arrayTemp[x];
+        while (leftIndex < left.size()) {
+            combined.add(left.get(leftIndex++));
         }
-    }
+        while (rightIndex < right.size()) {
+            combined.add(right.get(rightIndex++));
+        }
 
+        return combined;
+    }
 }

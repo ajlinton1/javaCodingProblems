@@ -3,6 +3,8 @@ package arrays;
 import org.junit.Assert;
 import org.junit.Test;
 
+import java.util.ArrayList;
+
 import static arrays.Sorter.mergeSort;
 import static arrays.Sorter.quickSort;
 
@@ -103,11 +105,15 @@ public class TestSortArray99 {
     @Test
     public void testMergeSort() {
         var numbers = ArrayService.getRandomArray();
+        var list = new ArrayList<Integer>();
+        for (var i=0;i<numbers.length;i++) {
+            list.add(numbers[i]);
+        }
 
-        mergeSort(numbers, 0, numbers.length-1);
+        var sorted = mergeSort(list);
 
         var previous1 = -1;
-        for (var current: numbers) {
+        for (var current: sorted) {
             Assert.assertTrue(current >= previous1);
             previous1 = current;
         }
