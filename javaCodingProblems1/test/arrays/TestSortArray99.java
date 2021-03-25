@@ -4,6 +4,7 @@ import org.junit.Assert;
 import org.junit.Test;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 
 import static arrays.Sorter.mergeSort;
 import static arrays.Sorter.quickSort;
@@ -114,6 +115,18 @@ public class TestSortArray99 {
 
         var previous1 = -1;
         for (var current: sorted) {
+            Assert.assertTrue(current >= previous1);
+            previous1 = current;
+        }
+    }
+
+    @Test
+    public void testArraySort() {
+        var numbers = ArrayService.getRandomArray();
+        Arrays.sort(numbers);
+
+        var previous1 = -1;
+        for (var current: numbers) {
             Assert.assertTrue(current >= previous1);
             previous1 = current;
         }
