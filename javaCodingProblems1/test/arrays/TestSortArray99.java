@@ -5,6 +5,7 @@ import org.junit.Test;
 
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.Comparator;
 
 import static arrays.Sorter.mergeSort;
 import static arrays.Sorter.quickSort;
@@ -129,6 +130,30 @@ public class TestSortArray99 {
         for (var current: numbers) {
             Assert.assertTrue(current >= previous1);
             previous1 = current;
+        }
+    }
+
+    @Test
+    public void testMelonSort() {
+        var numbers = ArrayService.getRandomArray();
+        var melons = new Melon[numbers.length];
+        for (var i=0;i<numbers.length;i++) {
+            melons[i] = new Melon(numbers[i]);
+        }
+
+/*        Arrays.sort(melons, new Comparator<Melon>() {
+            @Override
+            public int compare(Melon o1, Melon o2) {
+                return Integer.compare(o1.getWeight(), o2.getWeight());
+            }
+        }); */
+
+        Arrays.sort(melons, (Melon o1, Melon o2) -> Integer.compare(o1.getWeight(), o2.getWeight()));
+
+        var previous1 = -1;
+        for (var current: melons) {
+            Assert.assertTrue(current.getWeight() >= previous1);
+            previous1 = current.getWeight();
         }
     }
 
