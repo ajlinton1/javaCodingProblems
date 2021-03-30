@@ -158,6 +158,19 @@ public class TestSortArray99 {
     }
 
     @Test
+    public void testCountingSort() {
+        var numbers = ArrayService.getRandomArray();
+
+        var sorted = Sorter.countingSort(numbers);
+
+        var previous1 = -1;
+        for (var current: sorted) {
+            Assert.assertTrue(current >= previous1);
+            previous1 = current;
+        }
+    }
+
+    @Test
     public void testShuffle() {
         var numbers = ArrayService.getRandomArray();
         int[] newNumbers = new int[numbers.length];
