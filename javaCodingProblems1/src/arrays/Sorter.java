@@ -86,16 +86,16 @@ public class Sorter {
             }
         }
         var range = max - min;
-        var counter = new int[max+1];
+        var counter = new int[range+1];
         for (var x: numbers) {
-            counter[x] = counter[x] + x;
+            counter[x - min] = counter[x - min] + x;
         }
 
         int[] ret = new int[numbers.length];
         var retIndex = 0;
-        for (var h=0; h < counter.length; h++) {
-            int numValues = counter[h] / h;
-            for (var i=0;i<numValues;i++) {
+        for (var h=min; h <= max; h++) {
+            int numValues = counter[h-min] / h;
+            for (var i=0; i<numValues; i++) {
                 ret[retIndex++] = h;
             }
         }
