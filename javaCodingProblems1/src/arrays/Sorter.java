@@ -88,13 +88,13 @@ public class Sorter {
         var range = max - min;
         var counter = new int[range+1];
         for (var x: numbers) {
-            counter[x - min] = counter[x - min] + x;
+            counter[x - min]++;
         }
 
         int[] ret = new int[numbers.length];
         var retIndex = 0;
         for (var h=min; h <= max; h++) {
-            int numValues = counter[h-min] / h;
+            int numValues = counter[h-min];
             for (var i=0; i<numValues; i++) {
                 ret[retIndex++] = h;
             }
