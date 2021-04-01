@@ -102,4 +102,43 @@ public class Sorter {
 
         return ret;
     }
+
+    public static void heapSort(int[] numbers) {
+        var n = numbers.length;
+        buildHeap(numbers, n);
+
+        while (n > 1) {
+            swap(numbers, 0, n -1);
+            n--;
+            heapify(numbers, n, 0);
+        }
+    }
+
+    private static void buildHeap(int[] arr, int n) {
+        for (int i = arr.length / 2; i >= 0; i--) {
+            heapify(arr, n, i);
+        }
+    }
+
+    private static void heapify(int[] arr, int n, int i) {
+        int left = i * 2 + 1;
+        int right = i * 2 + 2;
+        int greater;
+
+        if (left < n && arr[left] > arr[i]) {
+            greater = left;
+        } else {
+            greater = i;
+        }
+
+        if (right < n && arr[right] > arr[greater]) {
+            greater = right;
+        }
+
+        if (greater != i) {
+            swap(arr, i, greater);
+            heapify(arr, n, greater);
+        }
+
+    }
 }

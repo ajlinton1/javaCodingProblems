@@ -173,6 +173,19 @@ public class TestSortArray99 {
     // TODO: Heap sort: https://learning.oreilly.com/library/view/java-coding-problems/9781789801415/1f36e2a3-d162-47ca-b3a9-021af39b253c.xhtml
 
     @Test
+    public void testHeapSort() {
+        var numbers = ArrayService.getRandomArray();
+
+        Sorter.heapSort(numbers);
+
+        var previous1 = -1;
+        for (var current: numbers) {
+            Assert.assertTrue(current >= previous1);
+            previous1 = current;
+        }
+    }
+
+    @Test
     public void testShuffle() {
         var numbers = ArrayService.getRandomArray();
         int[] newNumbers = new int[numbers.length];
