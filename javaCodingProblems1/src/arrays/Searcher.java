@@ -3,7 +3,14 @@ package arrays;
 public class Searcher {
 
     public static int binarySearch(int target, int[] a, int start, int end) {
-        int mid = (end - start) / 2;
+        if (end == start) {
+            if (a[start] == target) {
+                return start;
+            } else {
+                return -1;
+            }
+        }
+        int mid = ((end - start) / 2) + start;
         if (a[mid] == target) {
             return mid;
         } else {
