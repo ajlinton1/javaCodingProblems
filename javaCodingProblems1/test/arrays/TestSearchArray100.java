@@ -54,4 +54,15 @@ public class TestSearchArray100 {
         Assert.assertFalse(found);
     }
 
+    @Test
+    public void testSearchBinaryNotFound() {
+        var a = ArrayService.getRandomArray();
+        a = Sorter.countingSort(a);
+        var target = 200;
+
+        var location = Searcher.binarySearch(target, a, 0, a.length - 1);
+
+        Assert.assertEquals(location, -1);
+    }
+
 }
