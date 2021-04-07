@@ -4,6 +4,7 @@ import org.junit.Assert;
 import org.junit.Test;
 
 import java.util.Arrays;
+import java.util.Comparator;
 
 public class TestSearchArray100 {
 
@@ -105,4 +106,31 @@ public class TestSearchArray100 {
         var result = Arrays.stream(melons).findAny();
         Assert.assertTrue(result.isPresent());
     }
+
+    @Test
+    public void testSearchMelonCompare() {
+        var numbers = ArrayService.getRandomArray();
+        var melons = new Melon[numbers.length];
+        for (var i=0;i<numbers.length;i++) {
+            melons[i] = new Melon(numbers[i]);
+        }
+
+        Arrays.sort(melons, (Melon o1, Melon o2) -> Integer.compare(o1.getWeight(), o2.getWeight()));
+        var target = new Melon(14);
+
+        var result = containsElementObject(melons, target, byWeight);
+
+        Assert.assertTrue(result);
+    }
+
+    public static <T> boolean containsElementObject(T[] arr, T toContain, Comparator<? super T> c) {
+        for (T elem: arr) {
+            if (c.compare(elem, toContain) == 0) {
+                return true;
+            }
+        }
+        return false;
+    }
+
+    Comparator<Melon> byWeight = Comparator.comparing(Melon::getWeight);
 }
