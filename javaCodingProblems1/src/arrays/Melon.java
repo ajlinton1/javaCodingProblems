@@ -1,6 +1,6 @@
 package arrays;
 
-public class Melon {
+public class Melon implements Comparable {
 
     private int weight;
 
@@ -16,4 +16,9 @@ public class Melon {
         this.weight = weight;
     }
 
+    @Override
+    public int compareTo(Object o) {
+        var a = (Melon)o;
+        return Integer.compare(this.getWeight(), a.getWeight());
+    }
 }

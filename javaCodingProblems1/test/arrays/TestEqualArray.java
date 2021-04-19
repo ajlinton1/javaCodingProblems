@@ -38,4 +38,41 @@ public class TestEqualArray {
         Assert.assertTrue(equal);
     }
 
+    @Test
+    public void testArrayObjectEqual() {
+        var a = new Melon[100];
+        var b = new Melon[100];
+        for (var i=0;i<100;i++) {
+            a[i] = new Melon((int)(Math.random()*100));
+            b[i] = a[i];
+        }
+        var comparison = Arrays.compare(a, b);
+        Assert.assertEquals(0, comparison);
+    }
+
+    @Test
+    public void testArrayObjectEqual1() {
+        var a = new Melon[100];
+        var b = new Melon[100];
+        for (var i=0;i<100;i++) {
+            a[i] = new Melon((int)(Math.random()*100));
+            b[i] = new Melon((int)(Math.random()*100));
+        }
+        var comparison = Arrays.compare(a, b);
+        Assert.assertNotEquals(0, comparison);
+    }
+
+    @Test
+    public void testArrayObjectEqual2() {
+        var a = new Melon[100];
+        var b = new Melon[100];
+        for (var i=0;i<100;i++) {
+            var w = (int)(Math.random()*100);
+            a[i] = new Melon(w);
+            b[i] = new Melon(w);
+        }
+        var comparison = Arrays.compare(a, b);
+        Assert.assertEquals(0, comparison);
+    }
+
 }
