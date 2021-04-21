@@ -24,7 +24,7 @@ public class TestParser {
         int x = 5;
         int y = 6;
         int result = Integer.compareUnsigned(x, y);
-        Assert.assertTrue(result > 0);
+        Assert.assertTrue(result < 0);
     }
 
 }
