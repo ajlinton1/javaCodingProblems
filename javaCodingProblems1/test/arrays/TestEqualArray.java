@@ -38,4 +38,13 @@ public class TestEqualArray {
         Assert.assertTrue(equal);
     }
 
+    @Test
+    public void testArrayCompare() {
+        var a = ArrayService.getRandomArray();
+        var b = ArrayService.getRandomArray();
+        var c = Arrays.compare(a, b);
+
+        Assert.assertNotNull(c);
+    }
+
 }
