@@ -116,7 +116,7 @@ public class TestSearchArray100 {
         }
 
         Arrays.sort(melons, (Melon o1, Melon o2) -> Integer.compare(o1.getWeight(), o2.getWeight()));
-        var target = new Melon(14);
+        var target = new Melon(melons[14].getWeight());
 
         var result = containsElementObject(melons, target, byWeight);
 
