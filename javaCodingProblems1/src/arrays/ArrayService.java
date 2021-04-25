@@ -10,4 +10,14 @@ public class ArrayService {
         }
         return a;
     }
+
+    public static <T extends Comparable<T>> T max(T[] arr) {
+        T max = arr[0];
+        for (T elem: arr) {
+            if (elem.compareTo(max) > 0) {
+                max = elem;
+            }
+        }
+        return max;
+    }
 }
