@@ -20,4 +20,13 @@ public class TestArray106 {
 
     // TODO: Stream generator
 
+    @Test
+    public void testFillArray1() {
+        var a = new int[100];
+        Arrays.setAll(a, (index)->
+            (index * 5)
+        );
+
+        Assert.assertNotNull(a);
+    }
 }
