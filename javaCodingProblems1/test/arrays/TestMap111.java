@@ -5,6 +5,7 @@ import org.junit.Test;
 
 import java.util.HashMap;
 import java.util.Map;
+import java.util.function.Function;
 
 public class TestMap111 {
 
@@ -16,6 +17,17 @@ public class TestMap111 {
         computeAbsentPresent(map, "key1");
         Integer v = map.get("key1");
         Assert.assertEquals(new Integer(4), v);
+    }
+
+    Function<String, String> compute = k -> k + "value";
+
+    @Test
+    public void testComputeAbsentPresent1() {
+        var map = new HashMap<String, String>();
+        map.put("key1", "value1");
+
+        var v = map.computeIfAbsent("key2", k -> k + "value");
+        Assert.assertEquals("key2value", v);
     }
 
     private void computeAbsentPresent(Map<String,Integer> map, String key) {
