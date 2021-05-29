@@ -59,4 +59,30 @@ public class TestMap115 {
         }
         return ret;
     }
+
+    @Test
+    public void testMapMerge2() {
+        var map1 = new HashMap<String, Integer>();
+        map1.put("a", 1);
+        map1.put("b", 2);
+        map1.put("c", 3);
+
+        var map2 = new HashMap<String, Integer>();
+        map2.put("d", 4);
+        map2.put("e", 5);
+        map2.put("b", 6);
+
+        var map3 = TestMap115.mergeMaps(map1, map2);
+        Assert.assertNotNull(map3);
+        Assert.assertEquals(5, map3.keySet().size());
+    }
+
+    public static <K, V> Map<K, V> mergeMaps(Map<K, V> map1, Map<K, V> map2) {
+
+        Map<K, V> map = new HashMap<>(map1);
+
+        map2.forEach((key, value) -> map.merge(key, value, (v1, v2) -> v2));
+
+        return map;
+    }
 }
