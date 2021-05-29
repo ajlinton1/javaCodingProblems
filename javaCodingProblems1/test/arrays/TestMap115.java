@@ -6,6 +6,8 @@ import org.junit.Test;
 import java.util.Arrays;
 import java.util.HashMap;
 import java.util.Map;
+import java.util.stream.Collectors;
+import java.util.stream.Stream;
 
 public class TestMap115 {
 
@@ -78,11 +80,31 @@ public class TestMap115 {
     }
 
     public static <K, V> Map<K, V> mergeMaps(Map<K, V> map1, Map<K, V> map2) {
-
         Map<K, V> map = new HashMap<>(map1);
-
         map2.forEach((key, value) -> map.merge(key, value, (v1, v2) -> v2));
+        return map;
+    }
 
+    @Test
+    public void testMapMerge3() {
+        var map1 = new HashMap<String, Integer>();
+        map1.put("a", 1);
+        map1.put("b", 2);
+        map1.put("c", 3);
+
+        var map2 = new HashMap<String, Integer>();
+        map2.put("d", 4);
+        map2.put("e", 5);
+        map2.put("b", 6);
+
+        var map3 = TestMap115.mergeMapsStreams(map1, map2);
+        Assert.assertNotNull(map3);
+        Assert.assertEquals(5, map3.keySet().size());
+    }
+
+    public static <K, V> Map<K, V> mergeMapsStreams(Map<K, V> map1, Map<K, V> map2) {
+        Stream<Map.Entry<K, V>> combined = Stream.concat(map1.entrySet().stream(), map2.entrySet().stream());
+        Map<K, V> map = combined.collect(Collectors.toMap(Map.Entry::getKey, Map.Entry::getValue, (v1, v2) -> v2));
         return map;
     }
 }
