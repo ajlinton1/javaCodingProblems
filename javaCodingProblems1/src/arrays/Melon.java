@@ -21,4 +21,8 @@ public class Melon implements Comparable {
         var a = (Melon)o;
         return Integer.compare(this.getWeight(), a.getWeight());
     }
+
+    public Melon getCopy() {
+        return new Melon(getWeight());
+    }
 }
