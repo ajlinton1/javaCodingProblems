@@ -57,4 +57,16 @@ public class TestMap116 {
         return ret;
     }
 
+    @Test
+    public void testMapCopy1() {
+        var map1 = new HashMap<String, Integer>();
+        map1.put("a", 1);
+        map1.put("b", 2);
+        map1.put("c", 3);
+
+        var map2 = new HashMap<>(map1);
+        Assert.assertNotNull(map2);
+        Assert.assertEquals(3, map2.keySet().size());
+    }
+
 }
