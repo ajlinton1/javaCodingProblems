@@ -82,4 +82,30 @@ public class TestMap117 {
         Assert.assertNotNull(sorted);
     }
 
+    @Test
+    public void testSortKeyList() {
+        var map1 = new HashMap<String, Melon>();
+        map1.put("c", new Melon(1));
+        map1.put("a", new Melon(4));
+        map1.put("b", new Melon(2));
+
+        List<String> list = new ArrayList<>(map1.keySet());
+        Collections.sort(list);
+
+        Assert.assertNotNull(list);
+    }
+
+    @Test
+    public void testSortValueList() {
+        var map1 = new HashMap<String, Melon>();
+        map1.put("c", new Melon(1));
+        map1.put("a", new Melon(4));
+        map1.put("b", new Melon(2));
+
+        List<Melon> list = new ArrayList<>(map1.values());
+        Collections.sort(list);
+
+        Assert.assertNotNull(list);
+    }
+
 }
