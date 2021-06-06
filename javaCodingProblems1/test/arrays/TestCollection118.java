@@ -62,4 +62,29 @@ public class TestCollection118 {
         Assert.assertEquals(2, filtered.size());
     }
 
+    @Test
+    public void testFilterCollection3() {
+        List<String> list = new ArrayList<>();
+        list.add("a");
+        list.add("b");
+        list.add("c");
+
+        list.removeIf(v -> v.equals("b"));
+
+        Assert.assertNotNull(list);
+        Assert.assertEquals(2, list.size());
+    }
+
+    @Test
+    public void testFilterCollection4() {
+        List<String> list = new ArrayList<>();
+        list.add("a");
+        list.add("b");
+        list.add("c");
+
+        var separated = list.stream().collect(Collectors.partitioningBy(v->v.equals("b")));
+
+        Assert.assertNotNull(separated);
+    }
+
 }
