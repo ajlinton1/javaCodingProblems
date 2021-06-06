@@ -5,6 +5,8 @@ import org.junit.Test;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.function.Function;
+import java.util.function.Predicate;
 
 public class TestCollection118 {
 
@@ -30,21 +32,16 @@ public class TestCollection118 {
         list.add("a");
         list.add("b");
         list.add("c");
-        List<String> filtered = filterList(list, (v) -> {return !v.equals(("b"));});
+        List<String> filtered = filterList1(list, (v) -> {return !v.equals(("b"));});
 
         Assert.assertNotNull(filtered);
         Assert.assertEquals(2, filtered.size());
     }
 
-    @FunctionalInterface
-    public interface Predicate {
-        boolean isDesired(String s);
-    }
-
-    private List<String> filterList(List<String> list, Predicate predicate) {
+    private List<String> filterList1(List<String> list, Predicate<String> predicate) {
         List<String> filtered = new ArrayList<>();
         for (var x:list) {
-            if (predicate.isDesired(x)) {
+            if (predicate.test(x)) {
                 filtered.add(x);
             }
         }
