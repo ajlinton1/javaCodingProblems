@@ -45,4 +45,16 @@ public class TestArray119 {
 
         Assert.assertNotNull(array);
     }
+
+    @Test
+    public void testListToArray3() {
+        var list = new ArrayList<String>();
+        list.add("a");
+        list.add("b");
+        list.add("c");
+
+        var array = list.toArray(String[]::new);
+
+        Assert.assertNotNull(array);
+    }
 }
