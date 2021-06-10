@@ -6,6 +6,7 @@ import org.junit.Test;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.function.Function;
+import java.util.function.ToIntFunction;
 
 public class TestList121 {
 
@@ -18,7 +19,7 @@ public class TestList121 {
         original.add(4);
         original.add(5);
 
-        var subList = substitute(original, (x)->x*2);
+        var subList = substitute1(original, (x)->x*2);
 
         Assert.assertNotNull(subList);
     }
@@ -29,6 +30,11 @@ public class TestList121 {
             var r = sub.apply(x);
             ret.add(r);
         }
+        return ret;
+    }
+
+    ArrayList<Object> substitute1(List<Integer> original, Function<Integer,Integer> sub) {
+        var ret = original.stream().map(sub).collect(ArrayList::new, ArrayList::add, ArrayList::addAll);
         return ret;
     }
 }
