@@ -7,6 +7,7 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.function.Function;
 import java.util.function.ToIntFunction;
+import java.util.function.UnaryOperator;
 
 public class TestList121 {
 
@@ -37,4 +38,21 @@ public class TestList121 {
         var ret = original.stream().map(sub).collect(ArrayList::new, ArrayList::add, ArrayList::addAll);
         return ret;
     }
+
+    @Test
+    public void testSubstituteList1() {
+        List<Integer> original = new ArrayList();
+        original.add(1);
+        original.add(2);
+        original.add(3);
+        original.add(4);
+        original.add(5);
+
+        UnaryOperator<Integer> operator = (t) -> {return t*2;};
+
+        original.replaceAll(operator);
+
+        Assert.assertNotNull(original);
+    }
+
 }
