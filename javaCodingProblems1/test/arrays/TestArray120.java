@@ -54,4 +54,22 @@ public class TestArray120 {
 
         Assert.assertEquals(2, filtered.size());
     }
-}
+
+    @Test
+    public void testFilterByList2() {
+        Collection<Melon> melons = new ArrayList<>();
+        melons.add(new Melon(20));
+        melons.add(new Melon(30));
+        melons.add(new Melon(40));
+        melons.add(new Melon(50));
+
+        Map<Integer, Boolean> desired = new HashMap<>();
+        desired.put(30, true);
+        desired.put(40, true);
+
+        var filtered = melons.stream().filter((m)->{
+            return desired.containsKey(m.getWeight());
+        }).collect(ArrayList::new, ArrayList::add, ArrayList::addAll);
+
+        Assert.assertEquals(2, filtered.size());
+    }}
