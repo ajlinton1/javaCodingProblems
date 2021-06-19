@@ -3,9 +3,7 @@ package arrays;
 import org.junit.Assert;
 import org.junit.Test;
 
-import java.util.ArrayDeque;
-import java.util.Deque;
-import java.util.Queue;
+import java.util.*;
 
 public class TestBreadthFirstSearch123 {
 
@@ -24,36 +22,28 @@ public class TestBreadthFirstSearch123 {
 
         Assert.assertNotNull(root);
 
-        var target = 5;
-        var found = search(target, root);
-        Assert.assertTrue(found);
-    }
+        var target = 15;
 
-    boolean search(int target, Node root) {
-        if (root==null) {
-            return false;
-        } else {
-            Deque<Node> stack = new ArrayDeque<>();
-
-            if (root.v==target) {
-                return true;
-            } else {
-
-                if (root.left != null) {
-                    stack.push(root.left);
+        var visited = new ArrayList<Node>();
+        var queue = new LinkedList<Node>();
+        queue.add(root);
+        while (!queue.isEmpty()) {
+            var node = queue.poll();
+            System.out.println(node.v);
+            if (node.v==target) {
+                System.out.println("Found");
+                return;
+            }
+            if (!visited.contains(node)) {
+                if (node.left != null) {
+                    queue.add(node.left);
                 }
-                if (root.right != null) {
-                    stack.push(root.right);
+                if (node.right != null) {
+                    queue.add(node.right);
                 }
-
-                while (!stack.isEmpty()) {
-                    Node node = stack.pop();
-                    return search(target, node);
-                }
-
+                visited.add(node);
             }
         }
-        return false;
     }
 
     Node insert(int v, Node root) {
