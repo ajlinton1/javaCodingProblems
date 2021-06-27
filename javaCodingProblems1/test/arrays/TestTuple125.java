@@ -14,17 +14,13 @@ public class TestTuple125 {
 
     @Test
     public void testTuple() {
-        var numbers = new int[]{2,3,6,9,0};
-        var numbers1 = new ArrayList<Integer>();
-        numbers1.add(3);
-        Comparator<Integer> c1 = new ComparatorInteger();
         Integer[] numbers2 = new Integer[5];
         numbers2[0] = 5;
         numbers2[1] = 1;
         numbers2[2] = 7;
         numbers2[3] = 2;
         numbers2[4] = 9;
-        var s = stats(numbers2, c1);
+        var s = stats(numbers2, new ComparatorInteger());
         Assert.assertNotNull(s);
     }
 
