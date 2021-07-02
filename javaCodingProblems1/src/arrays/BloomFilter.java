@@ -6,10 +6,10 @@ import java.util.BitSet;
 
 public class BloomFilter<T> {
 
-    private BitSet bitset;
+    private int bitSetSize = 100;
+    private BitSet bitset = new BitSet(bitSetSize);
     private static final Charset CHARSET = StandardCharsets.UTF_8;
     private int numberOfAddedElements = 0;
-    private int bitSetSize = 10;
 
     public void add(T element){
         add(element.toString().getBytes(CHARSET));
@@ -37,3 +37,7 @@ public class BloomFilter<T> {
         return true;
     }
 }
+
+// https://en.wikipedia.org/wiki/Bloom_filter#Examples
+
+// https://www.cs.unc.edu/~fabian/courses/CS600.624/slides/bloomslides.pdf
