@@ -3,6 +3,8 @@ package arrays;
 import java.nio.charset.Charset;
 import java.nio.charset.StandardCharsets;
 import java.util.BitSet;
+import java.util.Objects;
+import java.security.*;
 
 public class BloomFilter<T> {
 
@@ -15,8 +17,13 @@ public class BloomFilter<T> {
         add(element.toString().getBytes(CHARSET));
     }
 
-    int hash(Object o) {
-        return o.hashCode();
+    int hash(byte[] bytes) {
+        int result = 0;
+        for (int i=0;i<bytes.length;i++) {
+            int h = bytes[i] % 7;
+            result = result + h;
+        }
+        return result;
     }
 
     public void add(byte[] bytes) {
