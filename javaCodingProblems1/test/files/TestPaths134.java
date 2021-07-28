@@ -27,4 +27,12 @@ public class TestPaths134 {
             }
         }
     }
+
+    @Test
+    public void testDeleteFile() throws Exception {
+        var directory = Paths.get("d:\\temp4");
+        var deleteFileVisitor = new DeleteFileVisitor();
+        EnumSet options = EnumSet.of(FileVisitOption.FOLLOW_LINKS);
+        Files.walkFileTree(directory, options, Integer.MAX_VALUE, deleteFileVisitor);
+    }
 }

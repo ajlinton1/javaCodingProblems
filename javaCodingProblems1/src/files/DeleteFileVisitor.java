@@ -15,21 +15,23 @@ public class DeleteFileVisitor implements FileVisitor {
 
     @Override
     public FileVisitResult preVisitDirectory(Object dir, BasicFileAttributes attrs) throws IOException {
-        return null;
+        return FileVisitResult.CONTINUE;
     }
 
     @Override
     public FileVisitResult visitFile(Object file, BasicFileAttributes attrs) throws IOException {
-        
+        delete((Path)file);
+        return FileVisitResult.CONTINUE;
     }
 
     @Override
     public FileVisitResult visitFileFailed(Object file, IOException exc) throws IOException {
-        return null;
+        return FileVisitResult.CONTINUE;
     }
 
     @Override
     public FileVisitResult postVisitDirectory(Object dir, IOException exc) throws IOException {
-        return null;
+        delete((Path)dir);
+        return FileVisitResult.CONTINUE;
     }
 }
