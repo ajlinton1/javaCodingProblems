@@ -35,4 +35,13 @@ public class TestPaths134 {
         EnumSet options = EnumSet.of(FileVisitOption.FOLLOW_LINKS);
         Files.walkFileTree(directory, options, Integer.MAX_VALUE, deleteFileVisitor);
     }
+
+    @Test
+    public void testCopyFolder() throws Exception {
+        Path copyFrom = Paths.get("c:\\temp4");
+        Path copyTo = Paths.get("c:\\temp5");
+        var copyFileVisitor = new CopyFileVisitor(copyFrom, copyTo);
+        EnumSet options = EnumSet.of(FileVisitOption.FOLLOW_LINKS);
+        Files.walkFileTree(copyFrom, options, Integer.MAX_VALUE, copyFileVisitor);
+    }
 }
