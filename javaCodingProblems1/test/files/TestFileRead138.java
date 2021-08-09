@@ -5,11 +5,13 @@ import org.junit.Test;
 
 import javax.sound.sampled.AudioInputStream;
 import java.io.*;
+import java.nio.CharBuffer;
 import java.nio.MappedByteBuffer;
 import java.nio.channels.FileChannel;
 import java.nio.charset.Charset;
 import java.nio.charset.StandardCharsets;
 import java.nio.file.*;
+import java.util.Arrays;
 import java.util.EnumSet;
 
 public class TestFileRead138 {
@@ -120,4 +122,41 @@ public class TestFileRead138 {
             }
         }
     }
+
+    @Test
+    public void testWriteTextFile() throws IOException {
+        var path = Paths.get("C:\\temp\\test.txt");
+        try (BufferedWriter bw = Files.newBufferedWriter(path, StandardCharsets.UTF_8, StandardOpenOption.CREATE, StandardOpenOption.WRITE)) {
+            bw.write("This is a test");
+            bw.newLine();
+            bw.write("More test");
+        }
+    }
+
+    @Test
+    public void testWriteListTextFile() throws IOException {
+        var path = Paths.get("C:\\temp\\list.txt");
+        var linesToWrite = Arrays.asList("abc", "def", "ghi");
+        Files.write(path, linesToWrite, StandardCharsets.UTF_8, StandardOpenOption.CREATE, StandardOpenOption.WRITE);
+    }
+
+    @Test
+    public void testWriteStringTextFile() throws IOException {
+        var path = Paths.get("C:\\temp\\s.txt");
+        var s = "This is a test";
+        Files.writeString(path, s, StandardCharsets.UTF_8, StandardOpenOption.CREATE, StandardOpenOption.WRITE);
+    }
+
+    @Test
+    public void testWriteBufferTextFile() throws IOException {
+        var path = Paths.get("C:\\temp\\b.txt");
+        CharBuffer cb = CharBuffer.wrap("This is a test");
+        try (FileChannel fileChannel = (FileChannel) Files.newByteChannel(path, EnumSet.of(StandardOpenOption.CREATE, StandardOpenOption.READ, StandardOpenOption.WRITE))) {
+            MappedByteBuffer mBuffer = fileChannel.map(FileChannel.MapMode.READ_WRITE, 0, cb.length());
+            if (mBuffer != null) {
+                mBuffer.put(StandardCharsets.UTF_8.encode(cb));
+            }
+        }
+    }
+
 }
