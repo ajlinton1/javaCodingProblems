@@ -17,14 +17,14 @@ public class TestFileRead139 {
 
     @Test
     public void testFileSize() throws IOException {
-        var path = Paths.get("C:\\Projects\\scala3Test2\\target\\scala-3.0.0\\classes\\hello.class");
+        var path = Paths.get("C:\\Projects\\javaCodingProblems\\out\\production\\javaCodingProblems\\files\\CopyFileVisitor.class");
         var fileSize = (int) Files.readAttributes(path, BasicFileAttributes.class).size();
         Assert.assertTrue(fileSize > 0);
     }
 
     @Test
     public void testReadFile() throws IOException {
-        var path = Paths.get("C:\\Projects\\scala3Test2\\target\\scala-3.0.0\\classes\\hello.class");
+        var path = Paths.get("C:\\Projects\\javaCodingProblems\\out\\production\\javaCodingProblems\\files\\CopyFileVisitor.class");
         var fileSize = (int) Files.readAttributes(path, BasicFileAttributes.class).size();
         final byte[] buffer = new byte[fileSize];
         try (InputStream is = new FileInputStream(path.toString())) {
@@ -38,7 +38,7 @@ public class TestFileRead139 {
 
     @Test
     public void testReadFile1() throws IOException {
-        var path = Paths.get("C:\\Projects\\scala3Test2\\target\\scala-3.0.0\\classes\\hello.class");
+        var path = Paths.get("C:\\Projects\\javaCodingProblems\\out\\production\\javaCodingProblems\\files\\CopyFileVisitor.class");
         var fileSize = (int) Files.readAttributes(path, BasicFileAttributes.class).size();
         final byte[] buffer = new byte[fileSize];
         try (BufferedInputStream bis = new BufferedInputStream(new FileInputStream(path.toString()))) {
@@ -52,7 +52,7 @@ public class TestFileRead139 {
 
     @Test
     public void testReadFile2() throws IOException {
-        var path = Paths.get("C:\\Projects\\scala3Test2\\target\\scala-3.0.0\\classes\\hello.class");
+        var path = Paths.get("C:\\Projects\\javaCodingProblems\\out\\production\\javaCodingProblems\\files\\CopyFileVisitor.class");
         var fileSize = (int) Files.readAttributes(path, BasicFileAttributes.class).size();
         final byte[] buffer = new byte[fileSize];
         try (BufferedInputStream bis = new BufferedInputStream(Files.newInputStream(path))) {
@@ -66,7 +66,7 @@ public class TestFileRead139 {
 
     @Test
     public void testReadFile3() throws IOException {
-        var path = Paths.get("C:\\Projects\\scala3Test2\\target\\scala-3.0.0\\classes\\hello.class");
+        var path = Paths.get("C:\\Projects\\javaCodingProblems\\out\\production\\javaCodingProblems\\files\\CopyFileVisitor.class");
         var fileSize = (int) Files.readAttributes(path, BasicFileAttributes.class).size();
         final byte[] buffer = new byte[fileSize];
         try (BufferedInputStream bis = new BufferedInputStream(Files.newInputStream(path))) {
@@ -80,14 +80,14 @@ public class TestFileRead139 {
 
     @Test
     public void testReadFile4() throws IOException {
-        var path = Paths.get("C:\\Projects\\scala3Test2\\target\\scala-3.0.0\\classes\\hello.class");
+        var path = Paths.get("C:\\Projects\\javaCodingProblems\\out\\production\\javaCodingProblems\\files\\CopyFileVisitor.class");
         var bytes = Files.readAllBytes(path);
         Assert.assertNotNull(bytes);
     }
 
     @Test
     public void testReadFile5() throws IOException {
-        var path = Paths.get("C:\\Projects\\scala3Test2\\target\\scala-3.0.0\\classes\\hello.class");
+        var path = Paths.get("C:\\Projects\\javaCodingProblems\\out\\production\\javaCodingProblems\\files\\CopyFileVisitor.class");
         try (FileChannel fileChannel = (FileChannel.open(path, EnumSet.of(StandardOpenOption.READ)))) {
             MappedByteBuffer mbBuffer = fileChannel.map(FileChannel.MapMode.READ_ONLY, 0, fileChannel.size());
             System.out.println(mbBuffer.limit());
@@ -96,7 +96,7 @@ public class TestFileRead139 {
 
     @Test
     public void testReadFile6() throws IOException {
-        var path = Paths.get("C:\\Projects\\scala3Test2\\target\\scala-3.0.0\\classes\\hello.class");
+        var path = Paths.get("C:\\Projects\\javaCodingProblems\\out\\production\\javaCodingProblems\\files\\CopyFileVisitor.class");
         final int MAP_SIZE = 5242880;
         try (FileChannel fileChannel = (FileChannel.open(path, EnumSet.of(StandardOpenOption.READ)))) {
             int position = 0;

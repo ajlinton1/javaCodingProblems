@@ -22,7 +22,7 @@ public class TestJson141 {
     @Test
     public void testReadJson() throws IOException {
         Jsonb jsonb = JsonbBuilder.create();
-        var path = Paths.get("C:\\Users\\ajlin\\OneDrive\\Backup\\songsOrphan.json");
+        var path = Paths.get("C:\\Projects\\javaCodingProblems\\data\\songsOrphan.json");
         Object[] objects = jsonb.fromJson(Files.newBufferedReader(path, StandardCharsets.UTF_8), Object[].class);
         Assert.assertNotNull(objects);
     }

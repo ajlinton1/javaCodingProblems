@@ -10,7 +10,7 @@ public class TestFilesFind {
 
     @Test
     public void testFindFile() throws Exception {
-        var path = Paths.get("C:\\Users\\ajlin\\OneDrive");
+        var path = Paths.get("C:\\temp");
         var fileStream = Files.find(path, 10,
                 (path1, attr)->path1.toString().endsWith("mp3"),
                 FileVisitOption.FOLLOW_LINKS);

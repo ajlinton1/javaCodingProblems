@@ -12,7 +12,7 @@ public class TestFilesWalk {
 
     @Test
     public void testFileWalk() throws Exception {
-        Path startPath = Paths.get("C:\\Python27");
+        Path startPath = Paths.get("C:\\temp");
         var paths = Files.walk(startPath, FileVisitOption.FOLLOW_LINKS);
         paths.forEach(System.out::println);
     }

@@ -11,6 +11,6 @@ public class TestPaths135 {
     public void testWatchPath() throws Exception{
         var pathWatcher = new PathWatcher();
         var path = Paths.get("C:\\temp4");
-        pathWatcher.watchFolder(path);
+//        pathWatcher.watchFolder(path);
     }
 }
