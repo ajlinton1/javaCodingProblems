@@ -2,6 +2,8 @@ package files;
 
 import org.junit.Test;
 
+import java.io.File;
+import java.io.FilenameFilter;
 import java.io.IOException;
 import java.nio.file.DirectoryStream;
 import java.nio.file.Files;
@@ -34,11 +36,28 @@ public class TestFileFilter {
     @Test
     public void testFilterFiles2() throws IOException {
         var path = Paths.get("C:\\Users\\Andy\\OneDrive\\Music");
-        try (DirectoryStream<Path> ds = Files.newDirectoryStream(path, p -> (Files.size((Path)p) > 1024 * 1024 * 1))) {
-            for (Path file: ds) {
-                System.out.println(file);
-            }
+        FilenameFilter filter = (f, n) -> n.endsWith(".mp3");
+        var files = path.toFile().list(filter);
+        for (String file: files) {
+            System.out.println(file);
         }
     }
 
+    @Test
+    public void testFilterFiles3() throws IOException {
+        var path = Paths.get("C:\\Users\\Andy\\OneDrive\\Music");
+        var files = path.toFile().list((f, n) -> n.endsWith(".mp3"));
+        for (String file: files) {
+            System.out.println(file);
+        }
+    }
+
+    @Test
+    public void testFilterFiles4() throws IOException {
+        var path = Paths.get("C:\\Users\\Andy\\OneDrive");
+        var files = path.toFile().listFiles(File::isDirectory);
+        for (File file: files) {
+            System.out.println(file);
+        }
+    }
 }
