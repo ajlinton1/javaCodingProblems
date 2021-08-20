@@ -12,5 +12,6 @@
     <orderEntry type="library" scope="TEST" name="junit:junit:4.13" level="project" />
     <orderEntry type="library" name="javax.json.bind.api" level="project" />
     <orderEntry type="library" name="eclipse.yasson" level="project" />
+    <orderEntry type="library" name="javax.json.bind:javax.json.bind-api:1.0" level="project" />
   </component>
 </module>
