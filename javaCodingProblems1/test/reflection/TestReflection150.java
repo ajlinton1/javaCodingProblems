@@ -4,6 +4,8 @@ import org.junit.Assert;
 import org.junit.Test;
 import java.lang.reflect.*;
 
+// https://learning.oreilly.com/library/view/java-cookbook-4th/9781492072577/ch17.html#javacook-reflection-SECT-2
+
 public class TestReflection150 {
 
     @Test
@@ -31,5 +33,13 @@ public class TestReflection150 {
         System.out.println(c.getConstructors());
         System.out.println(c.getDeclaredMethods());
         Assert.assertNotNull(null);
+    }
+
+    @Test
+    public void testInstantiate() throws Exception {
+        Class<MyClass> myClassClass = MyClass.class;
+        var myClass = myClassClass.getDeclaredConstructor().newInstance();
+        Assert.assertNotNull(myClass);
+        myClass.method1();
     }
 }
