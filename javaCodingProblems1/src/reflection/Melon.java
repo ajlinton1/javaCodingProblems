@@ -18,4 +18,9 @@ public class Melon implements Comparator<Melon> {
     public class Slice {
 
     }
+
+    public void method1(String... args) {
+        System.out.println(args);
+        return;
+    }
 }
