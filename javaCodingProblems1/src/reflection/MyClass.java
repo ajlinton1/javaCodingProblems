@@ -1,6 +1,6 @@
 package reflection;
 
-public class MyClass {
+public class MyClass implements MyInterface {
 
     int x;
 
