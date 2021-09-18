@@ -28,4 +28,12 @@ public class TestReflection154 {
                 .orElseThrow();
         Assert.assertNotNull(variableArgs);
     }
+
+    @Test
+    public void testNested() {
+        Class<Melon.NestedClasss> clazz = Melon.NestedClasss.class;
+        Class<?> nestHost = clazz.getNestHost();
+        Class<?>[] nestmembers = clazz.getNestMembers();
+        Assert.assertNotNull(nestmembers);
+    }
 }

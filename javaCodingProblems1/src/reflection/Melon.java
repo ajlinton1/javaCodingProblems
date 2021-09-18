@@ -23,4 +23,11 @@ public class Melon implements Comparator<Melon> {
         System.out.println(args);
         return;
     }
+
+    public class NestedClasss {
+
+        public String nestedMethod() {
+            return "This is a test";
+        }
+    }
 }
