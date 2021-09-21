@@ -4,15 +4,19 @@ import java.util.Comparator;
 
 public class Melon implements Comparator<Melon> {
 
-    int weigth;
+    int weight;
 
-    public int getWeigth() {
-        return weigth;
+    public void setWeight(int weight) {
+        this.weight = weight;
+    }
+
+    public int getWeight() {
+        return weight;
     }
 
     @Override
     public int compare(Melon m1, Melon m2) {
-        return Integer.compare(m1.getWeigth(), m2.getWeigth());
+        return Integer.compare(m1.getWeight(), m2.getWeight());
     }
 
     public class Slice {
