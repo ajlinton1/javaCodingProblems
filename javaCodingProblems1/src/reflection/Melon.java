@@ -2,6 +2,7 @@ package reflection;
 
 import java.util.Comparator;
 
+@MyAnnotation
 public class Melon implements Comparator<Melon> {
 
     int weight;
