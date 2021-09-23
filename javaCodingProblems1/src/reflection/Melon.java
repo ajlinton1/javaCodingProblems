@@ -1,11 +1,21 @@
 package reflection;
 
+import java.util.Collections;
 import java.util.Comparator;
+import java.util.List;
 
 @MyAnnotation
 public class Melon implements Comparator<Melon> {
 
     int weight;
+    String melonType;
+
+    public Melon() {}
+
+    public Melon(String melonType, int weight) {
+        this.melonType = melonType;
+        this.weight = weight;
+    }
 
     public void setWeight(int weight) {
         this.weight = weight;
@@ -35,4 +45,13 @@ public class Melon implements Comparator<Melon> {
             return "This is a test";
         }
     }
+
+    public List<Melon> cultivate(
+            String type, Seed seed, int noOfSeeds) {
+
+        System.out.println("The cultivate() method was invoked ...");
+
+        return Collections.nCopies(noOfSeeds, new Melon("Gac", 5));
+    }
 }
+
