@@ -53,5 +53,14 @@ public class Melon implements Comparator<Melon> {
 
         return Collections.nCopies(noOfSeeds, new Melon("Gac", 5));
     }
+
+    public static void cultivate(Seed seeds) {
+        System.out.println("The cultivate() method was invoked ...");
+    }
+
+    public static void peel(Slice slice) {
+        System.out.println("The peel() method was invoked ...");
+    }
+
 }
 
