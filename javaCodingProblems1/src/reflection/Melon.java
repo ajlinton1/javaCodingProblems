@@ -3,12 +3,21 @@ package reflection;
 import java.util.Collections;
 import java.util.Comparator;
 import java.util.List;
+import java.util.Map;
 
 @MyAnnotation
-public class Melon implements Comparator<Melon> {
+public class Melon<E extends Exception> extends Fruit<String, Seed> implements Comparator<Melon> {
 
     int weight;
     String melonType;
+    private List<Slice> slices;
+    public List<Slice> slice() throws E {
+        return null;
+    }
+
+    public Map<String, Integer> asMap(List<Melon> melons) {
+        return null;
+    }
 
     public Melon() {}
 
@@ -58,7 +67,7 @@ public class Melon implements Comparator<Melon> {
         System.out.println("The cultivate() method was invoked ...");
     }
 
-    public static void peel(Slice slice) {
+    public void peel(Slice slice) {
         System.out.println("The peel() method was invoked ...");
     }
 
