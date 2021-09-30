@@ -28,4 +28,11 @@ public class TestReflection163 {
         Class<?> typeString = stringClass.getComponentType();
     }
 
+    @Test
+    public void getModule() {
+        var module = Melon.class.getModule();
+        Assert.assertNotNull(module);
+        Assert.assertEquals(false, module.isNamed());
+    }
+
 }
