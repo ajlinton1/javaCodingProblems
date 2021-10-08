@@ -2,9 +2,7 @@ package functional;
 
 import org.junit.Assert;
 import org.junit.Test;
-import java.lang.reflect.*;
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.List;
 
 // https://learning.oreilly.com/library/view/ocp-oracle-certified/9781119619130/c06.xhtml#c6_1
