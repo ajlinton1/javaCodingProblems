@@ -5,6 +5,7 @@ import org.junit.Test;
 
 import java.util.HashMap;
 import java.util.Map;
+import java.util.function.Supplier;
 
 public class TestFactory169 {
 
@@ -13,6 +14,7 @@ public class TestFactory169 {
         var factory = new Factory();
         var vehicle = factory.produce("Car");
         Assert.assertNotNull(vehicle);
+        Assert.assertTrue(vehicle instanceof Car);
     }
 
     interface Vehicle {
@@ -43,16 +45,16 @@ public class TestFactory169 {
 
     class Factory {
 
-        Map<String, VehicleFactory> factoryMap = new HashMap<>();
+        Map<String, Supplier<Vehicle>> factoryMap = new HashMap<>();
 
         public Factory() {
-            factoryMap.put("Car", () -> {return new Car();});
-            factoryMap.put("Truck", () -> {return new Truck();});
+            factoryMap.put("Car", Car::new);
+            factoryMap.put("Truck", Truck::new);
         }
 
         public Vehicle produce(String vehicleType) {
             var factory = factoryMap.get(vehicleType);
-            return factory.produce();
+            return factory.get();
         }
     }
 }
