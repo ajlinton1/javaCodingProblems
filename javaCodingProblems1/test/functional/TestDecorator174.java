@@ -35,5 +35,17 @@ public class TestDecorator174 {
 
 
     }
+
+    @Test
+    public void testCakeDecorator() {
+        CakeDecorator nutsAndCream = new CakeDecorator(
+                (Cake c) -> c.decorate(" with Nuts"),
+                (Cake c) -> c.decorate(" with Cream"));
+
+        Cake cake = nutsAndCream.decorate(new Cake("Base cake"));
+
+// Base cake with Nuts with Cream
+        System.out.println(cake.getDecorations());
+    }
 }
 
