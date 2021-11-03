@@ -19,6 +19,12 @@ public class TestCommand176 {
         sequence.runSequence();
     }
 
+    @Test
+    public void testCoPilot() {
+        int x = 0;
+        String y = "";
+    }
+
     public interface IODevice {
         void copy();
         void delete();
