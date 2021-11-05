@@ -8,7 +8,7 @@ import java.util.function.Function;
 
 import static org.hamcrest.CoreMatchers.containsString;
 
-public class TestLambdas {
+public class TestLambdas178 {
 
     @Test
     public void testFirstAndLastChar() throws Exception {
