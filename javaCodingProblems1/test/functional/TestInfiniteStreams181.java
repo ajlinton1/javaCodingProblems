@@ -229,6 +229,8 @@ public class TestInfiniteStreams181 {
                 .limit(5)
                 .collect(Collectors.toList());
         result.forEach(System.out::println);
+
+        // TODO: почему не работает?h
     }
 
     @Test
