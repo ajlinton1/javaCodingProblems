@@ -34,6 +34,10 @@ public class Melon<E extends Exception> extends Fruit<String, Seed> implements C
         return weight;
     }
 
+    public String getType() {
+        return melonType;
+    }
+
     @Override
     public int compare(Melon m1, Melon m2) {
         return Integer.compare(m1.getWeight(), m2.getWeight());
