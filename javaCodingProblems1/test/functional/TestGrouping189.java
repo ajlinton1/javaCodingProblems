@@ -9,6 +9,7 @@ import java.util.function.IntFunction;
 import java.util.stream.Collector;
 import java.util.stream.Collectors;
 
+import static functional.Melon.Sugar.*;
 import static java.util.Comparator.comparingInt;
 import static java.util.stream.Collectors.*;
 
@@ -118,5 +119,23 @@ public class TestGrouping189 {
 
         return Collectors.collectingAndThen(
                 Collectors.toList(), l -> l.toArray(func.apply(l.size())));
+    }
+
+    @Test
+    public void testMultiLevelGrouping() {
+        List<Melon> melonsSugar = Arrays.asList(
+                new Melon("Crenshaw", 1200, HIGH),
+                new Melon("Gac", 3000, LOW), new Melon("Hemi", 2600, HIGH),
+                new Melon("Hemi", 1600), new Melon("Gac", 1200, LOW),
+                new Melon("Cantaloupe", 2600, MEDIUM),
+                new Melon("Cantaloupe", 3600, MEDIUM),
+                new Melon("Apollo", 2600, MEDIUM), new Melon("Horned", 1200, HIGH),
+                new Melon("Gac", 3000, LOW), new Melon("Hemi", 2600, HIGH));
+
+        Map<Melon.Sugar, Map<Integer, Set<String>>> bySugarAndWeight = melonsSugar.stream()
+                .collect(groupingBy(Melon::getSugar,
+                        groupingBy(Melon::getWeight, TreeMap::new,
+                                mapping(Melon::getType, toSet()))));
+        Assert.assertNotNull(bySugarAndWeight);
     }
 }
