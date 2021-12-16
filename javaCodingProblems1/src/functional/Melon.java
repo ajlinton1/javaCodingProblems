@@ -1,5 +1,6 @@
 package functional;
 
+import java.util.List;
 import java.util.Objects;
 
 public class Melon {
@@ -10,6 +11,7 @@ public class Melon {
     private final String type;
     private final int weight;
     private final Sugar sugar;
+    private List<String> pests;
 
     public Melon(String type, int weight, Sugar sugar) {
         this.type = type;
@@ -20,6 +22,13 @@ public class Melon {
     public Melon(String type, int weight) {
         this.type = type;
         this.weight = weight;
+        this.sugar = Sugar.UNKNOWN;
+    }
+
+    public Melon(String type, int weight, List<String> pests) {
+        this.type = type;
+        this.weight = weight;
+        this.pests = pests;
         this.sugar = Sugar.UNKNOWN;
     }
 
@@ -48,5 +57,9 @@ public class Melon {
 
     public Sugar getSugar() {
         return sugar;
+    }
+
+    public List<String> getPests() {
+        return pests;
     }
 }

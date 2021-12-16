@@ -55,4 +55,31 @@ public class TestFiltering191 {
 
         Assert.assertNotNull(melonsMapping1);
     }
+
+    @Test
+    public void testFlatMapping() {
+        List<Melon> melonsGrown = Arrays.asList(
+                new Melon("Honeydew", 5600,
+                        Arrays.asList("Spider Mites", "Melon Aphids", "Squash Bugs")),
+                new Melon("Crenshaw", 2000,
+                        Arrays.asList("Pickleworms")),
+                new Melon("Crenshaw", 1000,
+                        Arrays.asList("Cucumber Beetles", "Melon Aphids")),
+                new Melon("Gac", 4000,
+                        Arrays.asList("Spider Mites", "Cucumber Beetles")),
+                new Melon("Gac", 1000,
+                        Arrays.asList("Squash Bugs", "Squash Vine Borers")));
+
+        Map<String, Set<String>> pestsFlatMapping = melonsGrown.stream()
+                .collect(groupingBy(Melon::getType,
+                        flatMapping(m -> m.getPests().stream(), toSet())));
+
+        Assert.assertNotNull(pestsFlatMapping);
+
+        Map<Boolean, Set<String>> pestsFlatMapping1 = melonsGrown.stream()
+                .collect(partitioningBy(m -> m.getWeight() > 2000,
+                        flatMapping(m -> m.getPests().stream(), toSet())));
+
+        Assert.assertNotNull(pestsFlatMapping1);
+    }
 }
