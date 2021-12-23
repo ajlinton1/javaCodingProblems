@@ -9,7 +9,7 @@ public class Melon {
     }
 
     private final String type;
-    private final int weight;
+    private int weight;
     private final Sugar sugar;
     private List<String> pests;
 
@@ -44,8 +44,6 @@ public class Melon {
     public int hashCode() {
         return Objects.hash(type, weight, sugar);
     }
-    // constructors, getters, setters, equals(),
-    // hashCode(), toString() omitted for brevity
 
     public String getType() {
         return type;
@@ -55,11 +53,21 @@ public class Melon {
         return weight;
     }
 
+    public void setWeight(int weight) {
+        this.weight = weight;
+    }
+
     public Sugar getSugar() {
         return sugar;
     }
 
     public List<String> getPests() {
         return pests;
+    }
+
+    public static int growing100g(Melon melon) {
+        melon.setWeight(melon.getWeight() + 100);
+
+        return melon.getWeight();
     }
 }
