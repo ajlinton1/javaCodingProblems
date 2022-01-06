@@ -71,6 +71,23 @@ public class TestCompose197 {
                 .sorted(byWeightAndType)
                 .collect(Collectors.toList());
         Assert.assertNotNull(sortedMelons3);
-                                               }
+   }
+
+    @Test
+    public void testComposeComparators1() {
+        List<Melon> melons = Arrays.asList(new Melon("Gac", 2000),
+                new Melon("Horned", 1600), new Melon("Apollo", 3000),
+                new Melon("Gac", 3000), new Melon("hemi", 1600));
+
+        Comparator<Melon> byWeightAndType = Comparator.comparing(Melon::getWeight)
+                .thenComparing(Melon::getType, String.CASE_INSENSITIVE_ORDER);
+
+
+        List<Melon> sortedMelons = melons.stream()
+                .sorted(byWeightAndType)
+                .collect(Collectors.toList());
+
+        Assert.assertNotNull(sortedMelons);
+    }
 
 }
