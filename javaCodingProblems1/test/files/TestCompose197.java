@@ -7,6 +7,7 @@ import org.junit.Test;
 import java.util.Arrays;
 import java.util.Comparator;
 import java.util.List;
+import java.util.function.Function;
 import java.util.function.Predicate;
 import java.util.stream.Collectors;
 import java.util.stream.Stream;
@@ -88,6 +89,15 @@ public class TestCompose197 {
                 .collect(Collectors.toList());
 
         Assert.assertNotNull(sortedMelons);
+    }
+
+    @Test
+    public void testComposingFunctions() {
+        Function<Double, Double> f = x -> x * 2;
+        Function<Double, Double> g = x -> Math.pow(x, 2);
+        Function<Double, Double> gf = f.andThen(g);
+        double resultgf = gf.apply(4d); // 64.0
+        Assert.assertEquals(64.0, resultgf, 0.0);
     }
 
 }
