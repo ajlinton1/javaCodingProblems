@@ -55,5 +55,37 @@ public class TestThreadLifeCycleStages {
         }
     }
 
+    public void waitingThread() throws InterruptedException {
+        new Thread(() -> {
+            Thread t1 = Thread.currentThread();
+            Thread t2 = new Thread(() -> {
+
+                try {
+                    Thread.sleep(2000);
+                } catch (InterruptedException e) {
+                    e.printStackTrace();
+                }
+                System.out.println("WaitingThread t1: "
+                        + t1.getState()); // WAITING
+            });
+
+            t2.start();
+
+            try {
+                t2.join();
+            } catch (InterruptedException e) {
+                e.printStackTrace();
+            }
+
+        }).start();
+    }
+
+    @Test
+    public void testWaitingThread() throws InterruptedException {
+        waitingThread();
+        for (int i = 0; i < 10; i++) {
+            Thread.sleep(20000);
+        }
+    }
 }
 
