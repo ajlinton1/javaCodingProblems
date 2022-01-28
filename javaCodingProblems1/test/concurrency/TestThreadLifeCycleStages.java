@@ -87,5 +87,40 @@ public class TestThreadLifeCycleStages {
             Thread.sleep(20000);
         }
     }
+
+    @Test
+    public void testTimedWaiting() throws InterruptedException {
+        Thread t = new Thread(() -> {
+            try {
+                Thread.sleep(2000);
+            } catch (InterruptedException e) {
+                e.printStackTrace();
+            }
+        });
+
+        t.start();
+
+        Thread.sleep(500);
+
+        System.out.println("TimedWaitingThread t: "
+                + t.getState()); // TIMED_WAITING
+        Assert.assertEquals(Thread.State.TIMED_WAITING, t.getState());
+    }
+
+    @Test
+    public void testTerminated() throws InterruptedException {
+        Thread t = new Thread(() -> {
+
+        });
+
+        t.start();
+
+        Thread.sleep(1000);
+
+        System.out.println("TimedWaitingThread t: "
+                + t.getState());
+        Assert.assertEquals(Thread.State.TERMINATED, t.getState());
+    }
+
 }
 
