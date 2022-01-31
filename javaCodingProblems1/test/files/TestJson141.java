@@ -4,7 +4,6 @@ import org.junit.Assert;
 import org.junit.Test;
 import javax.json.bind.Jsonb;
 import javax.json.bind.JsonbBuilder;
-import javax.json.bind.*;
 
 import java.io.BufferedReader;
 import java.io.IOException;
