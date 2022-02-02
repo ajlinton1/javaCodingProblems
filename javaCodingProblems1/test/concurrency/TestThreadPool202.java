@@ -3,12 +3,9 @@ package concurrency;
 import org.junit.Assert;
 import org.junit.Test;
 
-import java.util.Random;
 import java.util.concurrent.*;
 
 public class TestThreadPool202 {
-
-
 
     private static final TransferQueue<String> queue = new LinkedTransferQueue<>();
 
@@ -19,7 +16,16 @@ public class TestThreadPool202 {
         AssemblyLine.stopAssemblyLine();
     }
 
-
+    @Test
+    public void testAssemblyLineProducer() throws InterruptedException {
+        AssemblyLineProducer.startAssemblyLine();
+        Thread.sleep(10 * 1000);
+        AssemblyLineProducer.stopAssemblyLine();
+        Thread.sleep(10 * 1000);
+        AssemblyLineProducer.startAssemblyLine();
+        Thread.sleep(10 * 1000);
+        AssemblyLineProducer.stopAssemblyLine();
+    }
 
 
 
