@@ -1,4 +1,4 @@
-package concurrency;
+package concurrency.threadPoolSingleThread_TransferQueue;
 
 import java.util.Queue;
 import java.util.Random;
