@@ -3,7 +3,7 @@ package concurrency;
 import concurrency.exchangers.AssemblyLine;
 import org.junit.Test;
 
-public class testExchange210 {
+public class TestExchange210 {
 
     // C:\Projects\Java-Coding-Problems\Chapter10\P210_Exchangers\src\modern\challenge\Main.java
 
