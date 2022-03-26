@@ -1,6 +1,6 @@
 package concurrency;
 
-import org.junit.Assert;
+import concurrency.latches.ServerInstance;
 import org.junit.Test;
 
 public class TestLatches208 {

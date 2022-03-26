@@ -1,4 +1,4 @@
-package concurrency;
+package concurrency.latches;
 
 import java.util.Random;
 import java.util.concurrent.CountDownLatch;
